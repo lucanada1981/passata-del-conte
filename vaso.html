@@ -322,8 +322,8 @@
   </section>
 
   <section class="sezione">
-    <div class="titolo-sezione"><span class="num">03</span><h2>Filiera a metri zero</h2></div>
-    <p class="sottotitolo">Dall'orto alla cucina, senza mai salire su un mezzo.</p>
+    <div class="titolo-sezione"><span class="num">03</span><h2>Tracciabilità</h2></div>
+    <p class="sottotitolo">Dall'orto alla cucina, una filiera a metri zero.</p>
 
     <div class="tappa">
       <p class="fase">Raccolta</p>
@@ -438,7 +438,7 @@ async function carica(){
 
     document.title = (v.nome_prodotto || 'Conserva') + ' — vasetto ' + id;
     testo('versione', v.versione || v.nome_prodotto);
-    testo('prodotto', v.versione ? (v.nome_prodotto + ': ' + v.versione) : v.nome_prodotto);
+    testo('prodotto', v.versione || v.nome_prodotto);
     testo('numero', id);
     testo('lotto', v.lotto);
     testo('peso', v.peso_netto);
