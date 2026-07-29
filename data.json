@@ -46,5 +46,53 @@
     "lotto": "L2026-07-28",
     "scadenza": "2027-07-28",
     "note": ""
+  },
+  "2026_004": {
+    "nome_prodotto": "La Passata del Conte",
+    "versione": "Datterino",
+    "varieta_pomodoro": "Datterino rosso, Datterino giallo",
+    "luogo_coltivazione": "Orto del Conte",
+    "gps_coltivazione": "45.649132, 12.458709",
+    "data_raccolta": "2026-07-26",
+    "data_produzione": "2026-07-29",
+    "luogo_confezionamento": "La Contea",
+    "gps_confezionamento": "45.649094, 12.458736",
+    "ingredienti": "Pomodoro (Datterino rosso 50%, Datterino giallo 50%), sale",
+    "peso_netto": "250 g",
+    "lotto": "L2026-07-29",
+    "scadenza": "2027-07-29",
+    "note": ""
+  },
+  "2026_005": {
+    "nome_prodotto": "La Passata del Conte",
+    "versione": "Datterino",
+    "varieta_pomodoro": "Datterino rosso, Datterino giallo",
+    "luogo_coltivazione": "Orto del Conte",
+    "gps_coltivazione": "45.649132, 12.458709",
+    "data_raccolta": "2026-07-26",
+    "data_produzione": "2026-07-29",
+    "luogo_confezionamento": "La Contea",
+    "gps_confezionamento": "45.649094, 12.458736",
+    "ingredienti": "Pomodoro (Datterino rosso 50%, Datterino giallo 50%), sale",
+    "peso_netto": "250 g",
+    "lotto": "L2026-07-29",
+    "scadenza": "2027-07-29",
+    "note": ""
+  },
+  "2026_006": {
+    "nome_prodotto": "La Passata del Conte",
+    "versione": "Datterino",
+    "varieta_pomodoro": "Datterino rosso, Datterino giallo",
+    "luogo_coltivazione": "Orto del Conte",
+    "gps_coltivazione": "45.649132, 12.458709",
+    "data_raccolta": "2026-07-26",
+    "data_produzione": "2026-07-29",
+    "luogo_confezionamento": "La Contea",
+    "gps_confezionamento": "45.649094, 12.458736",
+    "ingredienti": "Pomodoro (Datterino rosso 50%, Datterino giallo 50%), sale",
+    "peso_netto": "250 g",
+    "lotto": "L2026-07-29",
+    "scadenza": "2027-07-29",
+    "note": ""
   }
 }

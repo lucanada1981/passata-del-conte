@@ -255,6 +255,7 @@
 
   .rientro{ color: var(--bronzo); }
 
+
   .note{
     margin-top: 16px;
     padding: 12px 14px;
@@ -344,19 +345,19 @@
     <div class="titolo-sezione"><span class="num">04</span><h2>Impatto ambientale</h2></div>
 
     <div class="totale">
-      <span class="cifra">≈ 0,06</span>
-      <span class="um">kg CO₂e stimati per vasetto da 500 g</span>
+      <span class="cifra" id="co2_totale">—</span>
+      <span class="um">kg CO₂e stimati per 1 kg di conserva</span>
     </div>
 
     <table class="voci">
-      <tr><td>Coltivazione — digestato come unico concime, nessun diserbante</td><td>0,02</td></tr>
+      <tr><td>Coltivazione — digestato come unico concime, nessun diserbante</td><td id="co2_colt">—</td></tr>
       <tr><td>Irrigazione — acqua di pozzo, pompa a fotovoltaico autoprodotto</td><td>0,00</td></tr>
       <tr><td>Trasporto orto → cucina — 20 m a piedi</td><td>0,00</td></tr>
-      <tr><td>Cottura e sterilizzazione — energia rinnovabile autoprodotta</td><td>0,01</td></tr>
-      <tr><td>Vasetto in vetro Bormioli <strong>riutilizzato</strong> — solo lavaggio</td><td>0,01</td></tr>
-      <tr><td>Tappo twist-off Bormioli nuovo (≈ 10 g)</td><td>0,02</td></tr>
-      <tr><td>Cartellino in carta</td><td>&lt; 0,01</td></tr>
-      <tr><td>Totale</td><td>≈ 0,06</td></tr>
+      <tr><td>Cottura e sterilizzazione — energia rinnovabile autoprodotta</td><td id="co2_cottura">—</td></tr>
+      <tr><td>Vasetto in vetro Bormioli <strong>riutilizzato</strong> — solo lavaggio</td><td id="co2_vasetto">—</td></tr>
+      <tr><td>Tappo twist-off Bormioli nuovo (≈ 10 g)</td><td id="co2_tappo">—</td></tr>
+      <tr><td>Cartellino in carta</td><td id="co2_cartellino">—</td></tr>
+      <tr><td>Totale</td><td id="co2_totale_riga">—</td></tr>
     </table>
 
     <ul class="pratiche">
@@ -387,6 +388,19 @@
 </div>
 
 <script>
+// Stima CO2e riferita a UN CHILO DI CONSERVA (unità funzionale), non al singolo
+// vasetto. Le voci del contenuto (coltivazione, cottura) sono uguali per tutti;
+// contenitore, tappo e cartellino no: sono per vasetto, quindi divisi per una massa
+// più piccola pesano di più. Per questo il formato da 250 g ha un totale più alto.
+// Se cambi vasetto, tappo o formato, aggiorna qui.
+const IMPATTO = {
+  '500 g': { coltivazione:'0,04', cottura:'0,02', vasetto:'0,02', tappo:'0,04',
+             cartellino:'0,01', totale:'0,13' },
+  '250 g': { coltivazione:'0,04', cottura:'0,02', vasetto:'0,04', tappo:'0,08',
+             cartellino:'0,01', totale:'0,19' },
+};
+const IMPATTO_DEFAULT = IMPATTO['500 g'];
+
 const MESI = ['gennaio','febbraio','marzo','aprile','maggio','giugno',
               'luglio','agosto','settembre','ottobre','novembre','dicembre'];
 
@@ -453,6 +467,16 @@ async function carica(){
     mappa('link_produzione', v.gps_confezionamento);
 
     document.getElementById('scadenza').textContent = dataIt(v.scadenza);
+
+    const imp = IMPATTO[(v.peso_netto || '').trim()] || IMPATTO_DEFAULT;
+    testo('co2_colt', imp.coltivazione);
+    testo('co2_cottura', imp.cottura);
+    testo('co2_vasetto', imp.vasetto);
+    testo('co2_tappo', imp.tappo);
+    testo('co2_cartellino', imp.cartellino);
+    testo('co2_totale', '≈ ' + imp.totale);
+    testo('co2_totale_riga', '≈ ' + imp.totale);
+
 
     if(v.note){
       const n = document.getElementById('note');
